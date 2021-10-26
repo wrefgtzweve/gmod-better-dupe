@@ -1,0 +1,14 @@
+{
+    "title": "Better dupe",
+    "description": "Overrides the default duplicator tool to fix lag / crashes.",
+    "type": "tool",
+    "tags": [
+        "fun",
+        "build"
+    ],
+    "ignore": [
+        ".git/*",
+        "*.gma",
+        "README.md"
+    ]
+}
