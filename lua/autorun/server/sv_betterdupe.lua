@@ -16,6 +16,10 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
         local dupe = ply.CurrentDupe
         local pos = trace.HitPos
 
+        for _, v in pairs( dupe.Entities ) do -- Dirt hack to fix wire stuff
+            if v.LocalPos then v.LocalPos = nil end
+        end
+
         pos.z = pos.z - dupe.Mins.z
 
         ply.tempBetterDupeAdvDupe2 = table.Copy( ply.AdvDupe2 )
