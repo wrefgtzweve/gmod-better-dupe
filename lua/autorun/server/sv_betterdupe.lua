@@ -1,3 +1,8 @@
+if not AdvDupe2 then
+    PrintMessage( 3, "Advanced duplicator 2 is not installed. Better dupe has been disabled." )
+    return
+end
+
 hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
     local duper = weapons.GetStored( "gmod_tool" )["Tool"]["duplicator"]
 
