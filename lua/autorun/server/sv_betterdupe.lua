@@ -21,8 +21,8 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
         end
             
         if ply:KeyDown(IN_SPEED) then
-            if ply:IsAdmin() or ply:IsSuperAdmin() then
-                return duper.OldLeftClick(trace)
+            if ply:IsAdmin() then
+                return self:OldLeftClick(trace)
             else
                 AdvDupe2.Notify( ply, "Refusing to bypass Better Duplicator for a non-admin.", NOTIFY_ERROR )
                 return false
