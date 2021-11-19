@@ -4,7 +4,9 @@ if not AdvDupe2 then
 end
 
 hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
+
     local duper = weapons.GetStored( "gmod_tool" )["Tool"]["duplicator"]
+    duper.OldLeftClick = duper.LeftClick
 
     function duper:LeftClick( trace )
         local ply = self:GetOwner()
@@ -16,6 +18,15 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
             AdvDupe2.Notify( ply, "Better Duplicator is busy.", NOTIFY_ERROR )
 
             return false
+        end
+            
+        if ply:KeyDown(IN_RUN) then
+            if ply:IsAdmin() or ply:IsSuperAdmin() then
+                return duper.OldLeftClick(trace)
+            else
+                AdvDupe2.Notify( ply, "Refusing to bypass Better Duplicator for a non-admin.", NOTIFY_ERROR )
+                return false
+            end
         end
 
         local dupe = ply.CurrentDupe
