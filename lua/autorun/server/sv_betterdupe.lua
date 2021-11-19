@@ -20,7 +20,7 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
             return false
         end
             
-        if ply:KeyDown(IN_RUN) then
+        if ply:KeyDown(IN_SPEED) then
             if ply:IsAdmin() or ply:IsSuperAdmin() then
                 return duper.OldLeftClick(trace)
             else
