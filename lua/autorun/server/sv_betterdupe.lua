@@ -3,6 +3,7 @@ if not AdvDupe2 then
     return
 end
 
+local advDupe2Revision = 5
 hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
     local duper = weapons.GetStored( "gmod_tool" )["Tool"]["duplicator"]
 
@@ -38,6 +39,7 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
         ply.AdvDupe2.Angle.roll = 0
         ply.AdvDupe2.Pasting = true
         ply.AdvDupe2.Name = "Better dupe"
+        ply.AdvDupe2.Revision = advDupe2Revision
 
         AdvDupe2.InitPastingQueue( ply, ply.AdvDupe2.Position, ply.AdvDupe2.Angle, nil, true, true, true, tobool( ply:GetInfo( "advdupe2_paste_protectoveride" ) ) )
     end
