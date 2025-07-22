@@ -3,8 +3,6 @@ if not AdvDupe2 then
     return
 end
 
-local advDupe2Revision = 5
-
 hook.Add( "PreRegisterTOOL", "BetterDupeLoad", function( tool, class )
     if class ~= "duplicator" then return end
 
@@ -40,7 +38,7 @@ hook.Add( "PreRegisterTOOL", "BetterDupeLoad", function( tool, class )
         ply.AdvDupe2.Angle.roll = 0
         ply.AdvDupe2.Pasting = true
         ply.AdvDupe2.Name = "Better dupe"
-        ply.AdvDupe2.Revision = advDupe2Revision
+        ply.AdvDupe2.Revision = 5
 
         AdvDupe2.InitPastingQueue( ply, ply.AdvDupe2.Position, ply.AdvDupe2.Angle, nil, true, true, true, tobool( ply:GetInfo( "advdupe2_paste_protectoveride" ) ) )
     end
