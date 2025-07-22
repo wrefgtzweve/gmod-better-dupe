@@ -4,15 +4,16 @@ if not AdvDupe2 then
 end
 
 local advDupe2Revision = 5
-hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
-    local duper = weapons.GetStored( "gmod_tool" )["Tool"]["duplicator"]
 
-    function duper:LeftClick( trace )
+hook.Add( "PreRegisterTOOL", "BetterDupeLoad", function( tool, class )
+    if class ~= "duplicator" then return end
+
+    function tool:LeftClick( trace )
         local ply = self:GetOwner()
 
         if CLIENT then return true end
-
         if not ply.CurrentDupe or not ply.CurrentDupe.Entities then return false end
+
         if ply.AdvDupe2.Pasting or ply.AdvDupe2.Downloading then
             AdvDupe2.Notify( ply, "Better Duplicator is busy.", NOTIFY_ERROR )
 
@@ -45,7 +46,7 @@ hook.Add( "PostGamemodeLoaded", "BetterDupeLoad", function()
     end
 end )
 
-local function betterDupe( tbl )
+hook.Add( "AdvDupe_FinishPasting", "Betterdupe_AdvDupe_FinishPasting", function( tbl )
     local ply = tbl[1].Player
     if not ply or not ply.tempBetterDupe then return end
 
@@ -54,6 +55,4 @@ local function betterDupe( tbl )
 
     ply.tempBetterDupeAdvDupe2 = nil
     ply.tempBetterDupe = nil
-end
-
-hook.Add( "AdvDupe_FinishPasting", "Betterdupe_AdvDupe_FinishPasting", betterDupe )
+end )
